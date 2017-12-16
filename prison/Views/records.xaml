@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="prison.Views.records"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:prison.Views"
+             mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:prison.ModelViews" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <vm:AdmitionViewModel></vm:AdmitionViewModel>
+    </UserControl.DataContext>
+    <DockPanel>
+        <GroupBox
+            DockPanel.Dock="Bottom"
+                  Height="40"
+                  Background="GhostWhite">
+            <Grid Margin="0,0,0,4" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="23*"/>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource BigButton}" Command="{Binding ReloadGrid, Mode=TwoWay}" CommandParameter="{Binding}" Content="Update" x:Name="close"  HorizontalAlignment="Left"  Width="101" Grid.ColumnSpan="2" Height="Auto" Grid.RowSpan="2"   />
+
+                <Button Style="{StaticResource BigButton }" Command="{Binding  Export, Mode=TwoWay}" CommandParameter="{Binding}" Content="Export" x:Name="Add" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"  Width="102" Grid.ColumnSpan="2" Height="Auto"  >
+                    <Button.ToolTip>
+                        <StackPanel Width="100" Height="20">
+                            <TextBlock Margin="5" Foreground="Purple"  TextWrapping="Wrap"><Span>Export to Excel</Span></TextBlock>
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <!--The data grid that holds all prisoners details-->
+
+        <DataGrid IsSynchronizedWithCurrentItem="True"
+                  AlternatingRowBackground="#e6e9f0"
+                  AlternationCount="2"
+                  IsReadOnly="True"
+                  x:Name="Admitdatagridview"
+                  Background="Azure"
+                  RowBackground="Turquoise"
+                  
+                 AutoGenerateColumns="False" SelectionChanged="Admitdatagridview_SelectionChanged" >
+            <!--Setting custome data grid columns-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="FirstName" FontSize="16" Width="100" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="SecondName" FontSize="16" Width="100" Binding="{Binding SurName}" />
+                <DataGridTextColumn Header="OtherNameS" FontSize="16" Width="100" Binding="{Binding OtherName}"/>
+                <DataGridTextColumn Header="CellNumber" FontSize="16" Width="100" Binding="{Binding CellNumber}" />
+                <DataGridTextColumn Header="FileNumber" FontSize="16" Width="100" Binding="{Binding FileNumber}"/>
+                <DataGridTextColumn Header="Period" FontSize="16"  Width="100" Binding="{Binding Period}"/>
+                <DataGridTextColumn Header="Crime" FontSize="16" Width="100" Binding="{Binding Crime}"/>
+                <DataGridTextColumn Header="Age" FontSize="16" Width="100" Binding="{Binding Age}"/>
+                <DataGridTextColumn Header="Sex" FontSize="16"  Width="100" Binding="{Binding Sex}"/>
+                <DataGridTextColumn Header="Weight" FontSize="16" Width="100" Binding="{Binding Weight}"/>
+                <DataGridTextColumn Header="Height" FontSize="16" Width="100" Binding="{Binding Height}"/>
+            </DataGrid.Columns>
+
+            <!--Data grid resources-->
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="FontSize" Value="22"/>
+                    <Setter Property="BorderThickness" Value="1,1,1,1"/>
+                    <Setter Property="BorderBrush" Value="LightGoldenrodYellow" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+
+
+    </DockPanel>
+</UserControl>

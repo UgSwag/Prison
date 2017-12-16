@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="prison.Views.staff"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:prison.Views"
+             xmlns:vm="clr-namespace:prison.ModelViews" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <vm:StaffViewModel></vm:StaffViewModel>
+    </UserControl.DataContext>
+    <DockPanel Background="GhostWhite">
+        <GroupBox
+            DockPanel.Dock="Bottom"
+                  Height="40"
+                  Background="GhostWhite">
+            <Grid Margin="0,0,0,4" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="23*"/>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                
+
+
+                <Button  x:Name="SaveStaff" Grid.Row="1" Content="Save" Command="{Binding StaffMember, Mode=TwoWay}" CommandParameter="{Binding}" HorizontalAlignment="Left"  Width="70" Margin="0,4,0,0"  />
+
+
+                <Button x:Name="Add" Content="Refresh" Grid.Row="1" Grid.Column="3"  HorizontalAlignment="Right"  Width="70" Margin="0,4,0,0" Command="{Binding  RefreshStaff, Mode=TwoWay}" CommandParameter="{Binding}" >
+                    <Button.ToolTip>
+                        <StackPanel Width="100" Height="20">
+                            <TextBlock Margin="5" Foreground="Purple"  TextWrapping="Wrap"><Span>Refresh staff</Span></TextBlock>
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox Header="STAFF DETAILS"
+                  DockPanel.Dock="Bottom"
+                  Margin="80,0"
+                  Height="198"
+                  Background="Honeydew"
+                  FontSize="15"
+                  Foreground="#1d2120"
+                  >
+            <Grid x:Name="grid_staff">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="36*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MinWidth="35"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--Grid that represents fields for first and second names-->
+                <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=FirstName_txt}" FontSize="14"  Margin="0,0,0,5" Content="FirstName"/>
+                    <TextBox x:Name="FirstName_txt"  Grid.Row="0" Margin="0,5,24,5"   Validation.Error="Validation_Error"
+                       Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged, 
+                    ValidatesOnDataErrors=true, NotifyOnValidationError=true}"  Grid.Column="1"/>
+
+                    <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=FirstName_txt}"  FontSize="14" Grid.Column="2"  Margin="0,0,0,5" Content="SecondName"/>
+                    <TextBox x:Name="SecondName_txt" Grid.Column="3" Margin="0,5,20,5"  Validation.Error="Validation_Error"
+                    Text="{Binding Path=SecondName, UpdateSourceTrigger=PropertyChanged, 
+                    ValidatesOnDataErrors=true, NotifyOnValidationError=true}"/>
+                </Grid>
+                <!--The grid ends here-->
+
+
+                <!--The grid that represents other names and id values-->
+                <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=ThirdName_txt}" FontSize="14" Margin="0,0,0,5" Content="ThirdName"/>
+                    <TextBox x:Name="ThirdName_txt" Grid.Row="0" Margin="0,5,24,5"  Validation.Error="Validation_Error"
+                       Text="{Binding Path=OtherName, UpdateSourceTrigger=PropertyChanged, 
+                       ValidatesOnDataErrors=true, NotifyOnValidationError=true}"  Grid.Column="1"/>
+                    <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=Id_txt}" FontSize="14" Grid.Column="2" Content="Id" Margin="0,0,0,5"/>
+                    <TextBox x:Name="Id_txt" Grid.Column="3" Margin="0,5,22,5"  Validation.Error="Validation_Error"
+                         Text="{Binding Path=Id, UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}" />
+                </Grid>
+
+
+
+                <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=Address_txt}" Grid.Row="2" FontSize="16"   Margin="10,0,0,0" Content=" Address" Width="81"></Label>
+                <TextBox x:Name="Address_txt" Grid.Column="1" Grid.Row="2" Margin="5,5,20,5"  Validation.Error="Validation_Error"
+                    Text="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged,  
+                    ValidatesOnDataErrors=true, NotifyOnValidationError=true}" />
+
+                <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=PhoneNumber_txt}" Grid.Row="3" FontSize="14" Content="PhoneNumber" Grid.Column="0" Width="102" Margin="0" Grid.ColumnSpan="2"></Label>
+                <TextBox x:Name="PhoneNumber_txt" Grid.Row="3" Grid.Column="1"  Validation.Error="Validation_Error"
+                    Text="{Binding  Path=PhoneNumber, UpdateSourceTrigger=PropertyChanged, 
+                    ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Margin="5,5,20,5"  />
+
+                <Label Style="{StaticResource LabelValidations}" Target="{Binding ElementName=Rank_txt}" Grid.Row="4" FontSize="14"  Margin="16,0,0,0" Content="Rank" Width="70"></Label>
+                <TextBox x:Name="Rank_txt" Grid.Column="1" Grid.Row="4" Margin="5,5,20,5" Validation.Error="Validation_Error"  Text="{Binding Path=Rank, UpdateSourceTrigger=PropertyChanged, 
+                    ValidatesOnDataErrors=true, NotifyOnValidationError=true}" />
+            </Grid>
+        </GroupBox>
+
+        <DataGrid IsSynchronizedWithCurrentItem="True"
+                  AlternatingRowBackground="#e6e9f0"
+                  AlternationCount="1"
+                  IsReadOnly="True"
+                  x:Name="datagridview"
+                  Background="Azure"
+                  RowBackground="LightBlue"
+                  
+                 AutoGenerateColumns="False" SelectionChanged="datagridview_SelectionChanged">
+            <!--Setting custome data grid columns-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" FontSize="15" Width="160" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Second Name" FontSize="15" Width="160" Binding="{Binding SecondName}" />
+                <DataGridTextColumn Header="OtherName" FontSize="15" Width="160" Binding="{Binding OtherName}"/>
+                <DataGridTextColumn Header="Id" FontSize="15" Width="150" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Phone" FontSize="15" Width="150" Binding="{Binding PhoneNumber}"/>
+                <DataGridTextColumn Header="Rank" FontSize="15"  Width="150" Binding="{Binding Rank}"/>
+                <DataGridTextColumn Header="Address" FontSize="15" Width="150" Binding="{Binding Address}"/>
+            </DataGrid.Columns>
+
+            <!--Data grid resources-->
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="BorderThickness" Value="2,1,1,1"/>
+                    <Setter Property="BorderBrush" Value="LightGoldenrodYellow" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+
+    </DockPanel>
+
+</UserControl>

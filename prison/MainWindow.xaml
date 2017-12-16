@@ -1,0 +1,211 @@
+﻿<Window x:Name="MainWindow1" x:Class="prison.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prison"
+        xmlns:Views="clr-namespace:prison.Views" 
+        xmlns:ModelViews="clr-namespace:prison.ModelViews"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" MinHeight="740" MinWidth="1100" WindowStartupLocation="CenterScreen">
+
+
+    <!--WINDOW RESOURCES-->
+    <Window.Resources>
+        <DataTemplate  x:Name="RegesterModelViewTemplate"  DataType="{x:Type ModelViews:RegesterViewModel}">
+            <Views:Regester DataContext="{Binding}"/>
+        </DataTemplate >
+        <DataTemplate  x:Name="AdmitionModelViewTemplate" DataType="{x:Type ModelViews:AdmitionViewModel}">
+            <Views:AdmitPrison DataContext="{Binding}"/>
+        </DataTemplate >
+        <DataTemplate  x:Name="RecordsModelViewTemplate"  DataType="{x:Type ModelViews:RecordsViewModel}">
+            <Views:records DataContext="{Binding}"/>
+        </DataTemplate >
+        <DataTemplate  x:Name="StaffModelViewTemplate"  DataType="{x:Type ModelViews:StaffViewModel}">
+            <Views:staff DataContext="{Binding}"/>
+        </DataTemplate >
+        <DataTemplate  x:Name="HelpModelViewTemplate"  DataType="{x:Type ModelViews:HelpViewModel}">
+            <Views:Help DataContext="{Binding}"/>
+        </DataTemplate >
+        <DataTemplate  x:Name="SignInModelViewTemplate"  DataType="{x:Type ModelViews:SignInModelView}">
+            <Views:SignIn DataContext="{Binding}"/>
+        </DataTemplate >
+    </Window.Resources>
+    <!--Window Resources end here-->
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="521*"/>
+            <ColumnDefinition Width="571*"/>
+        </Grid.ColumnDefinitions>
+        <!-- This id the main grid and allocates all elements-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="3.45*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--the allocation ends here-->
+
+        <!--this is the top most color gray line-->
+        <TextBlock Grid.Row="0" Background="Gray" Grid.ColumnSpan="2">
+
+        </TextBlock>
+        <!--this lin ends here-->
+
+        <!--This grid carries the search button and space-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Logo" Background="#3498DB " Content="   BUSTED" FontFamily="Tahoma" FontSize="26" FontWeight="Bold" Foreground="#fff"/>
+
+            <!--App Name goes here-->
+            <TextBox Grid.Column="4" Grid.ColumnSpan="2" Margin="26,5,135,7" BorderThickness="2,3"/>
+
+            <!--Search button-->
+            <Button Style="{StaticResource UISaveButton}" Grid.Column="5" Margin="52,5,59,7" RenderTransformOrigin="-0.108,0.238" Content="Search">
+                <Button.ToolTip>
+                    <StackPanel Width="100" Height="70">
+                        <TextBlock Margin="5" Foreground="Purple"  TextWrapping="Wrap"><Span> search database</Span></TextBlock>
+                        <Image Height="40" Width="40" Source="C:\Users\Bravo\Documents\Visual Studio 2015\Projects\prison\prison\Images\Handcuff.jpg"></Image>
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+        </Grid>
+        <!--the search grid ends here-->
+
+        <!--second main grid that holds changing pages-->
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="62*"></RowDefinition>
+                <RowDefinition Height="62*"></RowDefinition>
+                <RowDefinition Height="62*"></RowDefinition>
+                <RowDefinition Height="47*"></RowDefinition>
+                <RowDefinition Height="77*"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="71*" ></ColumnDefinition>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="91*"  ></ColumnDefinition>
+                <ColumnDefinition Width="91*"  ></ColumnDefinition>
+                <ColumnDefinition Width="91*" ></ColumnDefinition>
+                <ColumnDefinition Width="91*"  ></ColumnDefinition>
+                <ColumnDefinition Width="91*"  ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--Dockpanel for side bar buttons-->
+            <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Background="Gray" Grid.ColumnSpan="2">
+
+                <StackPanel>
+                    <Button Style="{StaticResource MainButton}" Height="35"  Content="Regester" Click="RegesterButton"></Button>
+                    <Button Style="{StaticResource MainButton}" Height="35" Content="Admition" Click="Admition_Click"></Button>
+                    <Button Style="{StaticResource MainButton}" Height="35" Content="Records" Click="Records_clicked"></Button>
+                    <Button Style="{StaticResource MainButton}" Height="35" Content="Staff" Click="Staff_clicked"/>
+                    <Button Style="{StaticResource MainButton}" Height="35" Content="Help" Click="Help_clicked"/>
+
+
+                    <!--The weather Focus system-->
+                    <GroupBox x:Name="WeatherFocus" 
+                               DockPanel.Dock="Bottom"
+                               Margin="1,0"
+                               Height="460" >
+                        <GroupBox.Background>
+                            <ImageBrush ImageSource="Images/skybackground.jpg"/>
+                        </GroupBox.Background>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50*"/>
+                                <RowDefinition Height="47*"/>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="50*"/>
+                                <RowDefinition Height="51*"/>
+                                <RowDefinition Height="51*"/>
+                                <RowDefinition Height="94*"/>
+                                <RowDefinition Height="51*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" Foreground="white" FontSize="20" Text="Weather Forecast" TextAlignment="Center" Margin="5,5,0,5">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect Color="#FF292B28"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+
+                            <TextBox x:Name="WeatherSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,25" HorizontalAlignment="Left" Width="150"/>
+                            <Button Content="Search" Style="{StaticResource UISaveButton}" Grid.Row="1" Grid.Column="1" Margin="30,0,0,25" Click="Button_Click"/>
+                            <TextBlock x:Name="CityName" Grid.Row="1" Grid.Column="0"  Margin="0,26,0,0" Text="Nairobi" Foreground="White" FontSize="17" TextAlignment="Center"/>
+                            <TextBlock x:Name="CountryName" Grid.Row="1" Grid.Column="1"  Margin="0,26,0,0" Text="Kenya" Foreground="White" FontSize="17" TextAlignment="Center"/>
+                            <Image Grid.Row="2" Grid.Column="0" Margin="26,0,19,0" x:Name="WeatherIcon">
+                                <Image.Source>Images/weather_light_rain.jpg</Image.Source>
+                            </Image>
+
+                            <TextBlock x:Name="degreesC" Grid.Row="2" Grid.Column="1" Text="c" Foreground="White" FontSize="20" TextAlignment="Center"/>
+                            <!--The forecast heading for daily weather forecast-->
+                            <TextBlock x:Name="ForeCast" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="ForeCast" Foreground="White" FontSize="20" TextAlignment="Center"/>
+                            <!--Wind speed part-->
+                            <TextBlock x:Name="WindSpeed" Grid.Row="4" Grid.Column="0"  Text="WindSpeed:" Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,28,0,0"/>
+                            <TextBlock x:Name="windSpeed" Grid.Row="4" Grid.Column="1"  Text="10m/s" Foreground="White" FontSize="16" TextAlignment="Center" Margin="10,28,18,0"/>
+                            <!--The humidity part-->
+                            <TextBlock x:Name="humid" Grid.Row="4" Grid.Column="0" Text="Humidity:" Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,0,0,32"/>
+                            <TextBlock x:Name="humidity" Grid.Row="4" Grid.Column="1"  Text="humidity" Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,0,18,27" RenderTransformOrigin="1.143,0.611" HorizontalAlignment="Right" Width="56"/>
+                            <!--The pressure part-->
+                            <TextBlock x:Name="weatherPressure" Grid.Row="5" Grid.Column="0" Text="Pressure:" Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,5,0,25" RenderTransformOrigin="0.536,1.077"/>
+                            <TextBlock x:Name="Pressure" Grid.Row="5" Grid.Column="1" Text="1016 hpa " Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,5,0,25"/>
+                            <!-- Description xaml Indicator-->
+                            <TextBlock x:Name="Sun" Grid.Row="5" Grid.Column="0" Text="Description: " Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,26,0,4"/>
+                            <TextBlock x:Name="description" Grid.Row="5" Grid.Column="1" Text="cloud" Foreground="White" FontSize="15" TextAlignment="Left" Margin="5,26,0,4"/>
+                            <!--Maximum Temperature Indicator-->
+                            <TextBlock x:Name="maxTemp" Grid.Row="6" Grid.Column="0" Text="Max Temp: " Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,1,0,29"/>
+                            <TextBlock x:Name="MaximumTemperature" Grid.Row="6" Grid.Column="1" Text="c" Foreground="White" FontSize="18" TextAlignment="Center" Margin="5,0,-5,30"/>
+                            <!--Minmum Temperature indicator-->
+                            <TextBlock x:Name="minTemp" Grid.Row="6" Grid.Column="0" Text="Min Temp: " Foreground="White" FontSize="15" TextAlignment="Center" Margin="0,26,0,4"/>
+                            <TextBlock x:Name="MinimumTemperature" Grid.Row="6" Grid.Column="1" Text="c" Foreground="White" FontSize="18" TextAlignment="Center" Margin="10,26,0,4"/>
+                        </Grid>
+                    </GroupBox>
+                    <!--Weather focus window ends here-->
+                </StackPanel>
+            </DockPanel>
+
+            <!--This is my control that changes the pages-->
+            <ContentControl x:Name="ChangingContent" Grid.Row="0" Grid.RowSpan="5" Content="{Binding}" Grid.ColumnSpan="5" Grid.Column="2"/>
+
+        </Grid>
+        <!--The second main grid ends here-->
+
+        <!--footer Grid starts here-->
+        <Grid Grid.Row="3" Background="#FF852585" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--Sign in button-->
+            <Button  x:Name="SignIn"  Style="{ StaticResource UISaveButton}" BorderThickness="3" Margin="21,5,42,5" Click="SignIn_clicked">Sign In</Button>
+            <Button IsEnabled="False" Style="{StaticResource UISaveButton}" Margin="21,5,42,5" Background="#66000000" Visibility="Collapsed" x:Name="DisabledButton"></Button>
+            <!--Prison label goes here-->
+            <Label Grid.Column="2" Grid.ColumnSpan="2">Luzira Prison</Label>
+
+
+            <!--Sign Out button-->
+            <Button Grid.Column="5" x:Name="SignOut" BorderThickness="4" Style="{StaticResource UICancelButton}" Margin="51,8,31,5">Sign Out</Button>
+        </Grid>
+
+        <!--footer grid ends here-->
+    </Grid>
+</Window>

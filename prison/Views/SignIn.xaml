@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="prison.Views.SignIn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:prison.Views"
+             xmlns:vm="clr-namespace:prison.ModelViews"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <!--<UserControl.DataContext>
+        <vm:SignInModelView></vm:SignInModelView>
+    </UserControl.DataContext>-->
+    <Grid Background="Gray" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="4" Height="200" VerticalAlignment="Top" >
+            <Grid.Background>
+                <ImageBrush ImageSource="/prison;component/Images/Siren.jpg"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+
+            <!-- TextBlocks-->
+            <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="FirstName:" VerticalAlignment="Center" FontFamily="Verdana" FontWeight="Bold" FontSize="20" Foreground="#FFF" ></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="SecondName:" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Text="Department:" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF"></TextBlock>
+
+            <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Text="Address:" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF" ></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Text="Country:" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF" ></TextBlock>
+
+            <!--Text boxes-->
+            <TextBox  Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="20" Name="FirstNametxt" />
+            <TextBox Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="20" Name="SecondNametxt" />
+            <TextBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="20"  Name="Departmenttxt"/>
+            <TextBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="20"  Name="Adresstxt" />
+
+            <!--Combobox-->
+            <ComboBox Name="country" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="3" ScrollViewer.VerticalScrollBarVisibility="Visible"  VerticalAlignment="Center" Height="30"  
+               ItemsSource="{Binding countries}" 
+               SelectedItem="{Binding country}"
+               IsSynchronizedWithCurrentItem="true" SelectionChanged="ComboBox_SelectionChanged"
+               >
+            </ComboBox>
+
+            <!--These are the buttons-->
+            <Button Style="{DynamicResource CicleButton}" Command="{Binding Saved, Mode=TwoWay}" CommandParameter="{Binding}" Grid.Column="1" Grid.Row="7"  Content="Enter" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="18,0,0,0" Height="Auto" Width="34" />
+            <Button Style="{DynamicResource  CicleButton}" Grid.Column="3" Grid.Row="7" Content="Delete" Foreground="White" Margin="16,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="Auto" Width="35"/>
+
+        </Grid>
+    </Grid>
+</UserControl>
