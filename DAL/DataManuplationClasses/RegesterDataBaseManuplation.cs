@@ -36,6 +36,7 @@ namespace DAL
             { 
                 string query = "insert into prison.regester(FirstName,SecondName,Department,Country,Address,UserName) value('" + FirstName + "','" + SecondName + "','" + Department + "','" + Country + "','" + Address + "','" + UserName + "');";
                 MySqlCommand command = new MySqlCommand(query, connection);
+                //REVIEW:You may got an exception here
                 connection.Open();
                 MySqlDataReader Reader;
                 using (Reader = command.ExecuteReader())

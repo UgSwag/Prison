@@ -22,6 +22,7 @@ namespace prison.ModelViews
             get
             {
                 string result = null;
+                //REVIEW:You should use "String.Equal" instead of "==" for strings comparing. It gives you more abilities
                 if (columnName == "FirstName")
                 {
                     if (string.IsNullOrEmpty(FirstName)  || FirstName.Length >= 14)

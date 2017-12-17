@@ -37,6 +37,7 @@ namespace prison.ModelViews
             get
             {
                 string result = null;
+                //REVIEW:Use String.Equals instead of == for strings
                 if (columnName == "FirstName")
                 {
                     if (string.IsNullOrEmpty(FirstName) || FirstName.Length >= 14)

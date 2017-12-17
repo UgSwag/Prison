@@ -24,6 +24,7 @@ namespace DAL
             {
                 string query = "insert into prison.admitprisoners(FirstName,SurName,OtherName,CellNumber,FileNumber,Period,Crime,Age,Sex,Weight,Height) value('" + FirstName + "','" + SurName + "','" + OtherName+ "','" + CellNumber + "','" + FileNumber + "','" + Period + "','" + Crime + "','" + Age + "','" + Sex + "','" +Weight + "','" + Height + "');";
                 MySqlCommand command = new MySqlCommand(query, connection);
+                //REVIEW:You may got an exception here
                 connection.Open();
                 MySqlDataReader Reader;
                 using (Reader = command.ExecuteReader())

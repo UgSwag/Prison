@@ -28,6 +28,7 @@ namespace prison.Commands
             String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
             String result = (string)Clipboard.GetData(DataFormats.Text);
             record.Admitdatagridview.UnselectAllCells();
+            //REVIEW: Exception and possibility to recieve unclosed stream
             System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Bravo\Desktop\Prisoner'sDetails.xls");
             file.WriteLine(result.Replace(',', ' '));
             file.Close();

@@ -21,6 +21,8 @@ namespace DAL
             {
                 string query = "insert into prison.staff(FirstName,SecondName,OtherName,Id,Rank,PhoneNumber,Address) value('" + FirstName + "','" + SecondName + "','" + OtherName + "','" + Id + "','" +Rank + "','" + PhoneNumber + "','" + Address+ "');";
                 MySqlCommand command = new MySqlCommand(query, connection);
+
+                //REVIEW: you need to consider Exception
                 connection.Open();
                 MySqlDataReader Reader;
                 using (Reader = command.ExecuteReader())
@@ -43,7 +45,8 @@ namespace DAL
             {
              string myCommand = "SELECT * FROM prison.staff";
              MySqlDataAdapter sda = new MySqlDataAdapter(myCommand, connection);
-             connection.Open();
+                //REVIEW:What if exception occurs?
+                connection.Open();
              DataTable dt = new DataTable();
              sda.Fill(dt);
              return dt;
